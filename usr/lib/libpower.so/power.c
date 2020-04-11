@@ -41,7 +41,7 @@
 
 #include <stdio.h>
 #include <math.h>
-
+// TODO: ADD req 1-5
 float calc_power_r(float volt, float resistance) 
 {
     float effect;
