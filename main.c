@@ -1,5 +1,5 @@
 /*
-	file:	main.c
+  Author : Mikael Troedsson
 
 	For requirement see file ./../req/main.req
 ​
@@ -164,7 +164,7 @@ int main(int arc, char *argv[]){
 /* ask user for input, pArrayRes will be filled with
    resistor values */
 	userInput(pArrayRes);
-		
+
 
 /* show result using values from pArrayRes */
 	mainOutput(pArrayRes);
