@@ -17,8 +17,7 @@ Main program shall use shared library
 #include "./usr/lib/libcomponent.so/component.h"
 #include "./usr/lib/libpower.so/power.h"
 #include "./usr/lib/libresistance.so/resistance.h"
-​
-​
+
 /* Req#2
 Main program shall prompt user to enter
 .1 voltage
@@ -31,16 +30,14 @@ char conType;
 int nmbRstr;
 float userFloatInput;
 int oneMoreTime;
-​
-​
+
 /* clear buffer from \n and EOF after scanf */
 void clearBuff(){
 	int j;
 	while ( (j = getchar()) != '\n' && j != EOF )
 		;
 }
-​
-​
+
 void userInput(float *p){
 
 /* Req#2.1 get voltage from user*/
@@ -48,7 +45,7 @@ void userInput(float *p){
 	while(oneMoreTime){
 		printf("Voltage ? ");
 		scanf("%f", &vIn);
-​
+
 		if(vIn > 0.0 && vIn < 1000.0){
 			oneMoreTime = 0;
 		}
@@ -111,7 +108,7 @@ void userInput(float *p){
 		}
 	}
 }
-​
+
 /*Req#3
 Main program shall return to user
 .1 total resistance of used resistors (float 1 decimal)
@@ -122,23 +119,23 @@ Main program shall return to user
 float resTotal;
 float powTotal;
 int nmbE12ForResTotal;
-​
+
 void mainOutput(float *p){
 	printf("\n--==    result    ==--\n");
-​
+
+
 /* Req3.1 show total resistance calling shared library */
 	resTotal = calc_resistance(nmbRstr, conType, p);
 	printf("Rtot: \t%0.1f Ohm\n", resTotal);
 
-
 /* Req3.2 show total power calling shared library */
 	powTotal = calc_power_r(vIn, resTotal);
 	printf("Ptot: \t%0.2f Watt\n", powTotal);
-​
+
 /* Req3.3 sho replaceing resistors calling shared library */
 	float *res_Array = malloc(3 * sizeof(float));
 	nmbE12ForResTotal = e_resistance(resTotal, res_Array );
-​
+
 	float newRtot = 0;
 	printf("\nTo replace %0.1f Ohm, use in serie\n", resTotal);
 	for(int i = 0; i < nmbE12ForResTotal; i++){
@@ -148,10 +145,7 @@ void mainOutput(float *p){
 	printf("New total resistance: %0.1f Ohm\n", newRtot);
 	free(res_Array);
 }
-​
-​
-​
-​
+
 int main(int arc, char *argv[]){
 	printf("--==  electrotest  ==--\n");
 
