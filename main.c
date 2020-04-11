@@ -8,16 +8,15 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <ctype.h>
-​
 /* Req#1
 Main program shall use shared library
 .1 libresistance.so
 .2 libpower.so
 .3 libcomponent.so
 */
-#include "component.h"
-#include "power.h"
-#include "resistance.h"
+#include "./usr/lib/libcomponent.so/component.h"
+#include "./usr/lib/libpower.so/power.h"
+#include "./usr/lib/libresistance.so/resistance.h"
 ​
 ​
 /* Req#2

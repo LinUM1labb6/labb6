@@ -16,13 +16,10 @@ libs_l = -lcomponent -lpower -lresistance
 .PHONY: clean_objects
 .PHONY: lib
 # Define how to update object files using implicit rules
-#main.o: main.h
-component.o:
-	component.h
-power.o:
-	power.h
-resistance.o:
-		resistance.h
+main.o: main.c
+component.o: component.c
+power.o:	power.c
+resistance.o:	resistance.cs
 # Build shared library and electrotest
 all: electrotest
 electrotest: lib
