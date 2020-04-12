@@ -24,7 +24,7 @@ resistance.o:	resistance.c
 all: electrotest
 electrotest: lib
 	gcc -o electrotest $(objs) -L. -l$(static_libs)
-	gcc -L./usr/lib -Wl,-rpath=./lib -Wall -o electrotest main.c $(libs_l)
+	gcc -L ../lib -Wl,-rpath=../lib -Wall -o electrotest main.c $(libs_l)
 # Build library
 lib:
 	gcc -c -Wall -Werror -fpic component.c
