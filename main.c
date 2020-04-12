@@ -1,5 +1,5 @@
 /*
-  Author : Mikael Troedsson
+  Author : Mikael Thoresson
 
 	For requirement see file ./../req/main.req
 ​
