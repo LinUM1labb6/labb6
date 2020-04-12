@@ -19,7 +19,7 @@ libs_l = -lcomponent -lpower -lresistance
 main.o: main.c
 component.o: component.c
 power.o:	power.c
-resistance.o:	resistance.cs
+resistance.o:	resistance.c
 # Build shared library and electrotest
 all: electrotest
 electrotest: lib
@@ -27,13 +27,13 @@ electrotest: lib
 	gcc -L./usr/lib -Wl,-rpath=./usr/lib -Wall -o electrotest main.c $(libs_l)
 # Build library
 lib:
-	gcc -c -Wall -Werror -fpic component.c
+	gcc -c -Wall -Werror -fpic ./usr/lib/libcomponent.so/component.c
 	gcc -shared -o ./usr/lib/libcomponent.so component.o
 
-	gcc -c -Wall -Werror -fpic power.c
+	gcc -c -Wall -Werror -fpic ./usr/lib/libcomponent.so/power.c
 	gcc -shared -o ./usr/lib/libpower.so power.o
 
-	gcc -c -Wall -Werror -fpic resistance.c
+	gcc -c -Wall -Werror -fpic ./usr/lib/libcomponent.so/resistance.c
 	gcc -shared -o ./usr/lib/libresistance.so resistance.o
 
 # Install @ /usr/bin
