@@ -1,0 +1,60 @@
+Main program info and requirement
+
+Input requirement from excersise
+
+Req#1
+Main program shall use shared library
+.1 libresistance.so
+.2 libpower.so
+.3 libcomponent.so
+
+Req#2
+Main program shall prompt user to enter 
+.1 voltage
+.2 serie or parallell connection
+.3 number of resistors used
+.4 value of each used resistor
+
+Req#3
+Main program shall return to user
+.1 total resistance of used resistors (float 1 decimal)
+.2 total power (float 2 decimal)
+.3 using E12 value, return replace resistors connected in serial, for total resistance entered ny user
+
+
+Refinement of input requirements
+
+Req#1.123	Shared library shall be located in either /usr/lib or ./lib due to main program location.
+
+Req#2.1		Voltage shall not be less than 0 Volt and not larger than 1000 Volt (float format),
+			otherwise prompt user to enter new valid value
+
+Req#2.2		Connection type shall be serie (s) or parallell (p) (char format).
+			User may enter lower case or upper case, but main program
+			shall send upper case to library,
+			otherwise prompt user to enter new valid value.
+			
+Req#2.3		Number of resistors shall not be less than 1 and not more than 3 (int format),
+			otherwise prompt user to enter new valid value.
+
+Req#2.4		Each resistor value entered by user (float format) shall be stored in a dynamic array not
+			larger than the used numbers of resistors.
+			
+			
+Req#3.1		Provide library libresistance with number of resistors, connection type and pointer to dynamic array,
+			and it will return total resistance value (float format). 
+			Main program shall format returned resistance value to 1 decimal.
+			If return value is 0 or less then main program shall give user error message.
+			For error value, see libresistance.req
+			
+			
+Req#3.2		Provide libpower with voltage (float format), and either resistance (float format) or current (float format).
+			Main program shall format returned power value to 2 decimals
+			If return vale is less than 0 then main program shall give user error message.
+			For error message, see libpower.req
+
+Req#3.3		Provide libcomponent with resistance value (float format) and a pointer to a dynamic array (float format)
+			and it will return the  number of (int format) resistors connected in serie that are equal or
+			close to equal the provided resistance. The values of the resistors are stored in the dynamic array.
+			If return value is less than 0 then main program shall give user error message.
+			For error value, see libcomponent.req

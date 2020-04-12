@@ -1,0 +1,40 @@
+Shared library libresistance.so
+
+Function:	calc_resistance(int count, char conn, float *array)
+
+Arguments:	(int) count
+			Number of resistors in array that shall be used in 
+			the calculation
+
+			(char) conn
+			Indicate serie or parallell (S, P) connections of resistors
+			
+			(float) *array
+			Pointer to array with resistors for calculate total resistance
+
+Return		(float) total resistance
+			or a value to indicate an error
+
+
+
+Requirements
+
+Req#1		count shall not be less than 0 and not greater than 3
+			otherwise return -1
+
+Req#2		conn shall be 'P' or 'S'
+			otherwise return -1
+			
+Req#3		pointer *array shall not be empty
+			otherwise return -2
+			
+Req#4		if conn = P and any of the resistors in the calculation is = 0 Ohm
+			then return 0
+			
+Req#5		if not returning 0 or less
+			calculate total resistance due to S or P and return value in float format
+			
+
+Note		Req#3 is in original form, "library shall not crash". 
+			Current req#3 adds a return value, and of course the library shall not crash.
+			

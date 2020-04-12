@@ -1,0 +1,45 @@
+Shared library libcomponent.so
+
+Function:	int e_resistance(float orig_resistance, float *res_array )
+
+Arguments:	(float) orig_resistance
+			Resistance to replace with 0 to 3 resistors from E12 serie
+
+			(float) *res_array
+			Pointer to array with resistors for replacing orig_resistance
+
+Return		(int) count, number of resistors used in res_array to replace
+			orig_resistance
+			or
+			a value to indicate an error
+
+
+
+Requirements
+
+Req#1		count shall not be less than 0 and not greater than 3
+			
+Req#2		count shall reflect the number of resistors in res_array
+			that in serial connection are used to replace orig_resistance
+			
+Req#3		Not used places in res_array shall contain 0 (float)			
+
+Req#4		Pointer *res_array shall not be empty
+			otherwise return -2
+			
+Req#5		orig_resistance shall not be less than 0
+			otherwise return -1
+			
+Req#6		If not returning less than 0
+			calculate total resistance of 0 to 3 resistors from E12 in serial connection 
+			that are equal to orig_resistance
+			
+Req#7		If not equal value in Req#6 can be calculated, accept nearest lower value
+
+Req#8		Storing values in res_array shall start at index 0 in res_array and index
+			shall increase by 1 for every new value stored
+			
+Req#9		Value range in E12 serie shall be 1.0 Ohm to 10.0 MOhm
+
+Note		This library only handle serial resistance
+			
