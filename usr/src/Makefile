@@ -24,17 +24,17 @@ resistance.o:	resistance.c
 all: electrotest
 electrotest: lib
 	gcc -o electrotest $(objs) -L. -l$(static_libs)
-	gcc -L./usr/lib -Wl,-rpath=./usr/lib -Wall -o electrotest main.c $(libs_l)
+	gcc -L./usr/lib -Wl,-rpath=./lib -Wall -o electrotest main.c $(libs_l)
 # Build library
 lib:
-	gcc -c -Wall -Werror -fpic ./usr/src/component.c
-	gcc -shared -o ./usr/lib/libcomponent.so component.o
+	gcc -c -Wall -Werror -fpic component.c
+	gcc -shared -o ./lib/libcomponent.so component.o
 
-	gcc -c -Wall -Werror -fpic ./usr/src/power.c
-	gcc -shared -o ./usr/lib/libpower.so power.o
+	gcc -c -Wall -Werror -fpic power.c
+	gcc -shared -o ./lib/libpower.so power.o
 
-	gcc -c -Wall -Werror -fpic ./usr/src/resistance.c
-	gcc -shared -o ./usr/lib/libresistance.so resistance.o
+	gcc -c -Wall -Werror -fpic resistance.c
+	gcc -shared -o ./lib/libresistance.so resistance.o
 
 # Install @ /usr/bin
 install:
