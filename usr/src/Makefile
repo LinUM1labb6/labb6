@@ -28,13 +28,13 @@ electrotest: lib
 # Build library
 lib:
 	gcc -c -Wall -Werror -fpic component.c
-	gcc -shared -o ./lib/libcomponent.so component.o
+	gcc -shared -o ../lib/libcomponent.so component.o
 
 	gcc -c -Wall -Werror -fpic power.c
-	gcc -shared -o ./lib/libpower.so power.o
+	gcc -shared -o ../lib/libpower.so power.o
 
 	gcc -c -Wall -Werror -fpic resistance.c
-	gcc -shared -o ./lib/libresistance.so resistance.o
+	gcc -shared -o ../lib/libresistance.so resistance.o
 
 # Install @ /usr/bin
 install:
