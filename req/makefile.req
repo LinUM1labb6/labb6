@@ -3,19 +3,19 @@ Makefile for program electrotest
 Rules
 
 lib:
-Build shared libraries only
+Build shared libraries only in sub folder ./lib
 
 
 all:
 Build main program electrotest in the current location.
-Shared libraries shall be built in a sub folder /lib in the current location.
-Main program shall be linked with the shared libraries in sub folder /lib.
+Shared libraries shall be built in a sub folder ./lib in the current location.
+Main program shall be linked with the shared libraries in sub folder ./lib.
 
 Note. No change of LD_LIBRARY_PATH is allowed.
 
 
 install:
-Build main program in /usr/bin/ and shared libraries in /usr/lib/
+Build main program in root/usr/bin/ and shared libraries in root/usr/lib/
 Main program shall be linked with shared libraries in /usr/lib/
 
 
