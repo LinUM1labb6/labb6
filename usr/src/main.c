@@ -14,9 +14,9 @@ Main program shall use shared library
 .2 libpower.so
 .3 libcomponent.so
 */
-#include "./usr/lib/libcomponent.so/component.h"
-#include "./usr/lib/libpower.so/power.h"
-#include "./usr/lib/libresistance.so/resistance.h"
+#include "component.h"
+#include "power.h"
+#include "resistance.h"
 
 /* Req#2
 Main program shall prompt user to enter
