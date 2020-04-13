@@ -1,0 +1,74 @@
+# Makefile for electrotest
+#
+# Assume that this file is in same locatopn as all source code
+# and sub folder /lib exist in that location
+#
+
+# Mikael Thoresson, 2020
+#
+
+
+
+# Put files in variables for cleaner Makefile code
+objs = main.o
+libs = component power resistance
+libs_c = component.c power.c resistance.c
+libs_o = component.o power.o resistance.o
+libs_so = libcomponent.so libpower.so libresistance.so
+libs_l = -lcomponent -lpower -lresistance
+
+# Define 'functions' in Makefil
+.PHONY: all
+.PHONY: install
+.PHONY: uninstall
+.PHONY: clean
+.PHONY: clean_objects
+.PHONY: lib
+
+
+# Build electrotest in current location and shared library in subfolder ./lib
+all: electrotest
+
+electrotest: lib
+	cc -L./lib -Wl,-rpath=./lib -Wall -o electrotest main.c $(libs_l)
+
+
+# Build library in sub folder ./lib
+lib:
+	cc -c -Wall -Werror -fpic component.c
+	cc -shared -o ./lib/libcomponent.so component.o
+
+	cc -c -Wall -Werror -fpic power.c
+	cc -shared -o ./lib/libpower.so power.o
+
+	cc -c -Wall -Werror -fpic resistance.c
+	cc -shared -o ./lib/libresistance.so resistance.o
+
+
+# Install @ /usr/bin, /usr/lib/
+install:
+	sudo cc -c -Wall -Werror -fpic component.c
+	sudo cc -shared -o /usr/lib/libcomponent.so component.o
+
+	sudo cc -c -Wall -Werror -fpic power.c
+	sudo cc -shared -o /usr/lib/libpower.so power.o
+
+	sudo cc -c -Wall -Werror -fpic resistance.c
+	sudo cc -shared -o /usr/lib/libresistance.so resistance.o
+
+	sudo cc -L/usr/lib -Wl,-rpath=/usr/lib -Wall -o /usr/bin/electrotest main.c $(libs_l)
+
+# Uninstall @ /usr/bin, /usr/lib
+uninstall:
+	sudo rm /usr/bin/electrotest
+	sudo rm /usr/lib/libcomponent.so
+	sudo rm /usr/lib/libresistance.so
+	sudo rm /usr/lib/libpower.so
+
+# Remove all object files and electrotest in current location
+clean:
+	rm *.o electrotest
+
+# Remove all object files in currenit location
+clean_objects:
+	rm *.o
