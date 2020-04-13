@@ -49,7 +49,11 @@ install:
 
 # Uninstall @ /usr/bin
 uninstall:
-	echo "uninstall electrotest @/usr/bin"
+	sudo rm /usr/bin/electrotest
+	sudo rm /usr/lib/libcomponent.so
+	sudo rm /usr/lib/libresistance.so
+	sudo rm /usr/lib/libpower.so
+	
 # Remove all object files and electrotest
 clean:
 	rm *.o electrotest
