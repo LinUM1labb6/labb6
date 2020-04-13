@@ -1,6 +1,6 @@
 # Makefile for electrotest
 #
-# Mikael Thoresson
+# 
 # Put object files in variable objs
 objs = main.o
 libs = component power resistance
@@ -36,7 +36,16 @@ lib:
 
 # Install @ /usr/bin
 install:
-	echo "install electrotest @/usr/bin"
+	sudo cc -c -Wall -Werror -fpic component.c
+	sudo cc -shared -o /usr/lib/libcomponent.so component.o
+	
+	sudo cc -c -Wall -Werror -fpic power.c
+	sudo cc -shared -o /usr/lib/libpower.so power.o -lm
+	
+	sudo cc -c -Wall -Werror -fpic resistance.c 
+	sudo cc -shared -o /usr/lib/libresistance.so resistance.o -lm
+	
+	sudo cc -L/usr/lib -Wl,-rpath=/usr/lib -Wall -o /usr/bin/electrotest main.c $(libs_l)
 
 # Uninstall @ /usr/bin
 uninstall:
