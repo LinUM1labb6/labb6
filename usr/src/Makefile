@@ -28,11 +28,11 @@ lib:
 	cc -c -Wall -Werror -fpic component.c
 	cc -shared -o ../lib/libcomponent.so component.o
 	
-	cc -c -Wall -Werror -fpic power.c -lm
-	cc -shared -o ../lib/libpower.so power.o
+	cc -c -Wall -Werror -fpic power.c
+	cc -shared -o ../lib/libpower.so power.o -lm
 	
-	cc -c -Wall -Werror -fpic resistance.c -lm
-	cc -shared -o ../lib/libresistance.so resistance.o
+	cc -c -Wall -Werror -fpic resistance.c 
+	cc -shared -o ../lib/libresistance.so resistance.o -lm
 
 # Install @ /usr/bin
 install:
