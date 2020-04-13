@@ -43,7 +43,13 @@
 #include <math.h>
 // TODO: ADD req 1-5
 float calc_power_r(float volt, float resistance) 
-{
+{   //Req#1
+    if (resistance < 0) return -1;
+    //Req#2
+    if (resistance == 0) return -2;
+    //Req#3    
+    if(volt < 0) return -1;
+
     float effect;
     effect = pow(volt, 2) / resistance;
     // Float trunacating with int becaucse int dont round.
@@ -54,6 +60,10 @@ float calc_power_r(float volt, float resistance)
 
 float calc_power_i(float volt, float current) 
 {
+    //Req#3    
+    if(volt < 0) return -1;
+    //Req#4    
+    if(current < 0) return -1;
     float effect;
     effect = volt * current;
     // Float trunacating with int becaucse int dont round.
