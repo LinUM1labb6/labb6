@@ -1,0 +1,38 @@
+Filstruktur enligt min tolkning av uppgiften.
+
+
+Katalog där alla källkoder (.c .o .h) finns.
+.:
+component.c
+component.h
+component.o
+electrotest			// program electrotest byggt med make all
+lib				// underkatalog med byggda, delade bibliotek (.so)
+libcomponent.c
+libcomponent.h
+libpower.c
+libpower.h
+libresistance.c
+libresistance.h
+main.c
+Makefile
+power.c
+power.h
+power.o
+resistance.c
+resistance.h
+resistance.o
+
+./lib:				// innehållet i underkatalogen ./lib Byggs med make all eller make lib
+libcomponent.so
+libpower.so
+libresistance.so
+
+
+root/usr/bin:
+electrotest			// program electrotest byggt med make install
+
+root/usr/lib:
+libcomponent.so			// delade bibliotek byggda med make install
+libpower.so
+librecistance.so

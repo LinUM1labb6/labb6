@@ -1,0 +1,27 @@
+När make all körs, där alla källkodsfiler finns,
+ska programmet electrotest byggas på plats ./
+./electrotest
+
+ska delade bibliotek byggas i underkatalogen ./lib
+./lib/libcoponent.so
+./lib/librecistance.so
+./lib/libpower.so
+
+
+
+När make lib körs, 
+ska bara delade bibliotek byggas på plats ./lib
+./lib/libcoponent.so
+./lib/librecistance.so
+./lib/libpower.so
+
+
+
+När make install körs,
+ska programmet electrotest byggas på plats /usr/bin (root/usr/bin)
+/usr/bin/electrotest
+
+ska delade bibliotek byggas på plats /usr/lib (root/usr/lib)
+/usr/lib/libcoponent.so
+/usr/lib/librecistance.so
+/usr/lib/libpower.so
