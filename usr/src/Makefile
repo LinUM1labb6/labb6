@@ -6,7 +6,7 @@ objs = main.o
 libs = component power resistance
 libs_c = component.c power.c resistance.c
 libs_o = component.o power.o resistance.o
-libs_so = libcomponent.so libpower.so libresistance.so
+libs_so = libcomponent.so libresistance.so libpower.so
 libs_l = -lcomponent -lpower -lresistance
 # Define 'functions' in Makefil
 .PHONY: all
@@ -16,25 +16,23 @@ libs_l = -lcomponent -lpower -lresistance
 .PHONY: clean_objects
 .PHONY: lib
 # Define how to update object files using implicit rules
-main.o: main.c
-component.o: component.c
+component.o:	component.c
 power.o:	power.c
 resistance.o:	resistance.c
 # Build shared library and electrotest
 all: electrotest
 electrotest: lib
-	gcc -o electrotest $(objs) -L. -l$(static_libs)
-	gcc -L ../lib -Wl,-rpath=../lib -Wall -o electrotest main.c $(libs_l)
+	cc -L../lib -Wl,-rpath=../lib -Wall -o electrotest main.c $(libs_l)
 # Build library
 lib:
-	gcc -c -Wall -Werror -fpic component.c
-	gcc -shared -o ../lib/libcomponent.so component.o
-
-	gcc -c -Wall -Werror -fpic power.c
-	gcc -shared -o ../lib/libpower.so power.o
-
-	gcc -c -Wall -Werror -fpic resistance.c
-	gcc -shared -o ../lib/libresistance.so resistance.o
+	cc -c -Wall -Werror -fpic component.c
+	cc -shared -o ../lib/libcomponent.so component.o
+	
+	cc -c -Wall -Werror -fpic power.c -lm
+	cc -shared -o ../lib/libpower.so power.o
+	
+	cc -c -Wall -Werror -fpic resistance.c -lm
+	cc -shared -o ../lib/libresistance.so resistance.o
 
 # Install @ /usr/bin
 install:
